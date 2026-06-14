@@ -4,6 +4,8 @@
 **Last Updated:** June 2026
 **Authors:** [Your Names]
 
+> **Doc set.** This file is the product / business / legal source of truth and holds the master **Decision Log**. System design lives in [architecture.md](architecture.md); the committed stack in [tech-stack.md](tech-stack.md); design system in [design.md](design.md); prototype inventory in [UI.md](UI.md).
+
 ---
 
 ## Table of Contents
@@ -763,6 +765,8 @@ Operating as a money transmitter requires state-level licenses. By using **Strip
 
 ## 15. Technical Architecture Overview
 
+> **Superseded.** The committed stack now lives in [tech-stack.md](tech-stack.md) and detailed system design in [architecture.md](architecture.md). The sections below are the original planning notes (the "OR" menu), kept for historical context.
+
 ### 15.1 Recommended Stack (MVP)
 
 | Layer | Technology | Rationale |
@@ -1073,6 +1077,71 @@ Texas LLC with an optional Public Benefit Corporation election. Preserves founde
 ### Core Positioning: Social Impact First
 
 Primary promise is social impact + sustainability, not tax-deductibility (see [Section 19.2](#192-core-positioning-decision-settled)).
+
+### Pilot Payment & Build Sequencing (Locked 2026-06-13)
+
+- The target product includes **real payments via Stripe Connect** (consistent with the Stripe Connect decision above).
+- The **first user-facing test release ships without real money.** The core loop — list → browse → chat → meetup → dual-code handshake → simulated donation — is validated first.
+- The **real Stripe payment module is built last**, only after the legal spike (charitable-solicitation + quid-pro-quo research) clears.
+- **Rationale:** validate the product hypothesis cheaply and avoid building/redesigning the heaviest, legally-gated component before there is product-market signal.
+- **Architecture constraint:** the stack is still chosen to support webhooks, background jobs, and Stripe Connect, so the payment module can be added later without re-architecting.
+
+### MVP Core Loop (Locked 2026-06-13)
+
+**In the first test release:**
+- **Auth:** email only (Google and phone deferred).
+- **Listings:** create / browse / detail, with **real image upload** and **nonprofit selection**. **Price is fixed** — listing price = sale price; no in-chat negotiation for now.
+- **Chat:** **real-time** buyer↔seller messaging.
+- **Transaction:** dual-code handshake → simulated donation (no real money, per the Pilot Payment decision above).
+- **Nonprofits:** seeded manually (5–10 verified orgs inserted into the DB); public list + profile only. Self-serve registration + EIN/IRS verification + admin approval are deferred.
+
+**Deferred:** real payments, ratings/reputation, nonprofit analytics dashboard, sponsorship, phone verification, email/push notifications, heavy admin/moderation UI.
+
+**Assumed defaults:** city-level location only (real distance/geocoding later); in-app notifications only; manual moderation by the founder via the DB.
+
+**Stack implications (feed into the stack decision):** needs **object storage** (image upload) and a **realtime layer** (chat).
+
+### Tech Stack (Locked 2026-06-13)
+
+Single Next.js app + Supabase (Postgres / Auth / Realtime / Storage) + Vercel; **no separate backend.** Commits the "OR" menu in §15.1. Full detail and rationale: [tech-stack.md](tech-stack.md).
+
+### Data Model (Locked 2026-06-13)
+
+Canonical Postgres schema for the core loop. Full DDL: [architecture.md §2](architecture.md#2-data-model). Key decisions:
+
+- Transactions **snapshot** `nonprofit_id` + `amount_cents` at creation (recipient and amount are locked, independent of later listing edits).
+- Transaction `status` is coarse (`pending`/`completed`/`cancelled`/`disputed`); confirmation progress is tracked by `buyer_confirmed_at` / `seller_confirmed_at`.
+- In the first cut the **completed transaction is the donation record** — no separate donations/payouts table until real money.
+- Listing photos live in a dedicated `listing_images` table.
+- Trust stats (donated total, completed count, raised) are **computed on read**, not stored.
+- Money is integer cents throughout.
+
+### State Machines (Locked 2026-06-13)
+
+Core-loop lifecycle for the no-money cut. Full spec: [architecture.md §4](architecture.md#4-state-machines). Key decisions:
+
+- The **buyer initiates the deal** ("confirm deal" → creates the `pending` transaction + dual codes, locks the listing); no separate seller-accept step (mirrors the future "Pay now").
+- First-cut listing states are `active → pending_meetup → completed/cancelled`; `interested` / `reserved` are unused for now (kept in the enum for the payment era).
+- **No background job in the first cut** — cancellation is manual (either party) or lazy-expired (>72h); the Vercel Cron auto-sweep arrives with the payment module.
+- Dual-code completion: buyer enters `seller_code` (→ `buyer_confirmed_at`), seller enters `buyer_code` (→ `seller_confirmed_at`); both set → the server completes and records the simulated donation. All comparisons server-side.
+
+### API Surface (Locked 2026-06-13)
+
+Full spec: [architecture.md §3](architecture.md#3-api--route-design). Key decisions:
+
+- **Reads** run in Server Components querying Supabase directly (RLS-protected); **mutations** are Next.js **Server Actions**; **Route Handlers** are reserved for external webhooks (the future Stripe webhook is the first).
+- Every mutation derives the **actor from the session** (never a client-supplied id), validates input server-side, and relies on RLS as defense-in-depth.
+- The transaction **amount and recipient are derived server-side** from the listing at deal time (the client sends only `chat_id`).
+- A Postgres trigger on `auth.users` insert creates the `profiles` row.
+
+### Core Subsystems — Realtime, Storage, Security (Locked 2026-06-13)
+
+Full spec: [architecture.md §5–§7](architecture.md#5-realtime-chat). Key decisions:
+
+- **Chat realtime** uses Supabase Realtime over the `messages` table (Postgres Changes), gated by RLS so only participants receive messages.
+- **Listing images** live in a public-read `listing-images` Supabase Storage bucket; max 5 per listing, client-compressed, thumbnails via Supabase image transforms.
+- **RLS on every table**; participant-only access for chats / messages / transactions.
+- **Confirmation codes are never exposed to the counterparty:** column `select` revoked, `getTransaction` returns only the actor's own code, comparison is server-side — preserving the dual-code trust.
 
 ### Action Required (Legal — Before Launch)
 

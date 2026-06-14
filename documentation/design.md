@@ -7,7 +7,7 @@
 | **Status** | Draft v0.3 |
 | **Last updated** | June 2026 |
 | **Brand direction** | "Modern Trust" |
-| **Related** | [projectplanning1.md](projectplanning1.md) · [UI.md](UI.md) · [../CLAUDE.md](../CLAUDE.md) |
+| **Related** | [general-doc.md](general-doc.md) · [tech-stack.md](tech-stack.md) · [architecture.md](architecture.md) · [UI.md](UI.md) · [../CLAUDE.md](../CLAUDE.md) |
 
 ---
 
@@ -202,7 +202,7 @@ plus a warm humanist sans for body and UI. This avoids the generic single-font
 
 - **Fallback:** Inter, system-ui.
 - **Money & numbers:** always `tabular-nums`; amounts use integer-cents formatting
-  (see `projectplanning1.md` money convention).
+  (see the money convention in `../CLAUDE.md` / [general-doc.md](general-doc.md)).
 
 ### Type Scale
 
