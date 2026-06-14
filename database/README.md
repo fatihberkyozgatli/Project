@@ -1,4 +1,4 @@
-# Database
+# Aldofa - Database
 
 Plain SQL for the Aldofa database (Supabase Postgres). Design and rationale live in
 [`../Documentation/architecture.md`](../Documentation/architecture.md) and the runbook in
