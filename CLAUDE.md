@@ -24,8 +24,9 @@ durable here.
 
 - `Documentation/general-doc.md` — product, business, legal, trust & GTM; master Decision Log (source of truth)
 - `Documentation/tech-stack.md` — the committed tech stack (locked)
-- `Documentation/architecture.md` — system design: data model, API, state machines (in progress)
+- `Documentation/architecture.md` — system design: data model, API, state machines, subsystems
 - `Documentation/database.md` — database runbook: migrations, RLS, functions, storage, seed
+- `Documentation/plan.md` — MVP build plan (milestones, build order)
 - `Documentation/design.md` — design system (tokens, components)
 - `Documentation/UI.md` — prototype page inventory & workflows
 
