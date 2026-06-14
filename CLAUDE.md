@@ -22,29 +22,32 @@ durable here.
 
 ## Key Documents
 
-- `Documentation/projectplanning1.md` — main planning & architecture doc (source of truth)
+- `Documentation/general-doc.md` — product, business, legal, trust & GTM; master Decision Log (source of truth)
+- `Documentation/tech-stack.md` — the committed tech stack (locked)
+- `Documentation/architecture.md` — system design: data model, API, state machines (in progress)
 - `Documentation/design.md` — design system (tokens, components)
 - `Documentation/UI.md` — prototype page inventory & workflows
 
-## Tech Stack (planned — see `projectplanning1.md` §15)
+## Tech Stack (locked — see `Documentation/tech-stack.md`)
 
-- **Frontend:** React + Next.js
-- **Backend:** Next.js API routes (or Node/Express)
-- **Database:** PostgreSQL via Supabase
-- **Auth:** Supabase Auth (Google OAuth, email, phone)
+Single Next.js app + Supabase + Vercel; no separate backend.
+
+- **App:** Next.js (App Router) + TypeScript + Tailwind — UI and server (API routes / server actions)
+- **Database:** Supabase Postgres
+- **Auth:** Supabase Auth (email at MVP; Google/phone later)
 - **Realtime/chat:** Supabase Realtime
-- **Payments:** Stripe Connect (Express)
-- **Storage:** Supabase Storage or Cloudflare R2
-- **Background jobs:** Inngest or BullMQ (timeouts, webhook retries)
-- **Hosting:** Vercel (frontend) + Railway/Fly.io (backend)
+- **Storage:** Supabase Storage (listing images)
+- **Hosting:** Vercel
+- **Deferred (payment era):** Stripe Connect (payments), Vercel Cron (timeouts/webhooks)
 
 Nothing is installed yet; treat the stack as the agreed target, not the current state.
 
 ## Conventions
 
 - **Money:** store and compute amounts in integer cents — never floats.
-- **Source of truth:** don't duplicate business/legal/architecture detail here;
-  link to `Documentation/projectplanning1.md` instead.
+- **Source of truth:** don't duplicate business/legal detail here — link to
+  `Documentation/general-doc.md`; system-design detail lives in
+  `Documentation/architecture.md`.
 - **No emojis:** never use emojis anywhere — not in the product UI, copy, docs,
   commit messages, or chat. Use real icons (line/SVG) in the UI instead.
 - **No comments:** do not write code comments. Write self-explanatory code with

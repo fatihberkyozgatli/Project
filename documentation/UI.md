@@ -2,7 +2,7 @@
 
 > What's built in the prototype (`/prototype`) and how the pages connect.
 > Stack: Next.js (App Router) + Tailwind + TypeScript, mock data only.
-> Related: [design.md](design.md) · [projectplanning1.md](projectplanning1.md)
+> Related: [general-doc.md](general-doc.md) · [tech-stack.md](tech-stack.md) · [architecture.md](architecture.md) · [design.md](design.md)
 
 ---
 
