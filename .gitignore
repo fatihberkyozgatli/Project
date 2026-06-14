@@ -1,5 +1,6 @@
 #local files
-.claude
+.claude/*
+!.claude/settings.json
 .superpowers
 
 # dependencies
