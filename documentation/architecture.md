@@ -387,7 +387,7 @@ RLS is enabled on every table. Policies (summarized):
 | `nonprofits` | `verification = 'approved'` (public) | founder / service role only |
 | `listings` | browseable statuses, or owner | by owner (`seller_id = auth.uid()`) |
 | `listing_images` | public (approved listings) | by listing owner |
-| `chats` | participant only (`auth.uid() in (buyer_id, seller_id)`) | participant only |
+| `chats` | participant only (`auth.uid() in (buyer_id, seller_id)`) | buyer can open a chat only for an `active` listing with that listing's seller |
 | `messages` | chat participant | insert by participant while chat `active` (`sender_id = auth.uid()`) |
 | `transactions` | participant only | insert via `confirmDeal` (buyer); update via actions |
 | `notifications` | owner (`user_id = auth.uid()`) | update own only |
