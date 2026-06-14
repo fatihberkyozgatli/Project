@@ -38,7 +38,7 @@ export default function AboutPage() {
           <span className="text-brand">real giving.</span>
         </h1>
         <p className="mt-4 text-lg text-sand-600">
-          Marketplace for Non-Profits is a peer-to-peer marketplace where people
+          Aldofa is a peer-to-peer marketplace where people
           exchange secondhand goods — not for personal profit, but to support the
           causes they care about. Every completed sale becomes a donation.
         </p>

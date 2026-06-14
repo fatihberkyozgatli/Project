@@ -1,4 +1,4 @@
-# [APP_NAME] — Database Runbook
+# Aldofa — Database Runbook
 
 > The executable database layer: migrations, RLS policies, functions, storage, and seed.
 > The **design and rationale** live in [architecture.md §2 (Data model)](architecture.md#2-data-model) and [§7 (Auth & security)](architecture.md#7-auth--security) — that doc is canonical for *what* the schema is and *why*. This file is canonical for the *runnable SQL* and *how to stand it up*.

@@ -1,4 +1,4 @@
-# [APP_NAME] — MVP Build Plan
+# Aldofa — MVP Build Plan
 
 > The executable build sequence for the first test release (no real money).
 > Decisions: [general-doc.md](general-doc.md) · System design: [architecture.md](architecture.md) · Stack: [tech-stack.md](tech-stack.md) · Prototype: [UI.md](UI.md)

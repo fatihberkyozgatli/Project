@@ -17,7 +17,7 @@ const body = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Marketplace for Non-Profits",
+  title: "Aldofa — every sale becomes a donation",
   description:
     "A charity-enabled peer-to-peer marketplace where every sale becomes a donation.",
 };

@@ -1,7 +1,7 @@
 const sections = [
   {
     h: "1. Overview",
-    p: "Marketplace for Non-Profits is a commercial technology platform that lets people sell secondhand goods and route the proceeds to verified nonprofits. We are not a nonprofit ourselves.",
+    p: "Aldofa is a commercial technology platform that lets people sell secondhand goods and route the proceeds to verified nonprofits. We are not a nonprofit ourselves.",
   },
   {
     h: "2. Accounts",

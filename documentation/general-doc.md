@@ -1,4 +1,4 @@
-# [APP_NAME] — Charity-Enabled Peer-to-Peer Marketplace
+# Aldofa — Charity-Enabled Peer-to-Peer Marketplace
 ## Startup Planning & Architecture Document
 **Status:** Pre-MVP / Planning Phase
 **Last Updated:** June 2026
@@ -35,7 +35,7 @@
 ## 1. Product Vision
 
 ### Mission Statement
-[APP_NAME] is a charity-enabled peer-to-peer marketplace where people exchange secondhand goods — not for personal profit, but to support the causes they care about. Every completed transaction becomes a donation.
+Aldofa is a charity-enabled peer-to-peer marketplace where people exchange secondhand goods — not for personal profit, but to support the causes they care about. Every completed transaction becomes a donation.
 
 ### Core Value Proposition
 - **For Sellers:** Declutter with purpose. Your unwanted items become real donations to nonprofits you choose.
@@ -114,7 +114,7 @@ Form a **Texas LLC**. Optionally elect **Public Benefit Corporation (PBC)** stat
 - Operational speed
 
 ### Platform Positioning Statement
-> "[APP_NAME] is a commercial technology platform. We are not a nonprofit. We build tools that make it easy for everyday people to direct real money to real nonprofits through the things they already do — buying and selling locally."
+> "Aldofa is a commercial technology platform. We are not a nonprofit. We build tools that make it easy for everyday people to direct real money to real nonprofits through the things they already do — buying and selling locally."
 
 ---
 
@@ -1150,7 +1150,7 @@ Full spec: [architecture.md §5–§7](architecture.md#5-realtime-chat). Key dec
 | 1 | Charitable solicitation registration | Does facilitating payments to nonprofits trigger registration? | TX (primary); CA, NY, IL (high-volume); multi-state | HIGH — gates go-to-market timeline |
 | 2 | Donation receipt handling | Who issues the receipt? (Platform triggers, nonprofit issues.) IRS Pub 1771. | Federal | MEDIUM — affects nonprofit onboarding UX |
 | 3 | Buyer-side tax-deductibility | Is a buyer's payment deductible given quid pro quo (item received)? | Federal | HIGH — gates buyer messaging |
-| 4 | Platform 501(c)(3) status (optional) | Could [APP_NAME] itself qualify? (Decided against — LLC + PBC.) | Federal | LOW — decision already made |
+| 4 | Platform 501(c)(3) status (optional) | Could Aldofa itself qualify? (Decided against — LLC + PBC.) | Federal | LOW — decision already made |
 
 ---
 

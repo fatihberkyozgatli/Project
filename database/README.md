@@ -1,6 +1,6 @@
 # Database
 
-Plain SQL for the [APP_NAME] database (Supabase Postgres). Design and rationale live in
+Plain SQL for the Aldofa database (Supabase Postgres). Design and rationale live in
 [`../Documentation/architecture.md`](../Documentation/architecture.md) and the runbook in
 [`../Documentation/database.md`](../Documentation/database.md). This folder is the runnable SQL.
 

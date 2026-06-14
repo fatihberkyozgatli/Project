@@ -1,4 +1,4 @@
-# [APP_NAME] — Architecture
+# Aldofa — Architecture
 
 > Engineering source of truth: how the system is built.
 > Tech choices in [tech-stack.md](tech-stack.md) · Product/business in [general-doc.md](general-doc.md).

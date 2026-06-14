@@ -19,9 +19,9 @@ export function Logo({
       </span>
       {!compact && (
         <span className="font-display text-[15px] font-extrabold leading-none text-ink">
-          Marketplace
+          Aldofa
           <span className="block text-[11px] font-bold uppercase tracking-[0.12em] text-brand">
-            for Non-Profits
+            every sale a donation
           </span>
         </span>
       )}

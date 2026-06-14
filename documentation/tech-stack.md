@@ -1,4 +1,4 @@
-# [APP_NAME] — Tech Stack
+# Aldofa — Tech Stack
 
 > The committed technology choices for the MVP.
 > Product/business decisions live in [general-doc.md](general-doc.md) · System design in [architecture.md](architecture.md).

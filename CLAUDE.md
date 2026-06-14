@@ -1,4 +1,4 @@
-# [APP_NAME]
+# Aldofa
 
 Charity-enabled peer-to-peer marketplace where every sale becomes a donation.
 > "Facebook Marketplace, but every sale becomes a donation."

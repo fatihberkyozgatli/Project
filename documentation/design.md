@@ -1,4 +1,4 @@
-# [APP_NAME] — Design System
+# Aldofa — Design System
 
 > A warm, trustworthy marketplace where the charitable outcome is always the hero.
 

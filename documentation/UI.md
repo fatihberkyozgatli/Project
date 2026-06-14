@@ -1,4 +1,4 @@
-# [APP_NAME] — UI & Pages
+# Aldofa — UI & Pages
 
 > What's built in the prototype (`/prototype`) and how the pages connect.
 > Stack: Next.js (App Router) + Tailwind + TypeScript, mock data only.
